@@ -1,5 +1,6 @@
 #include <spconvlib/spconv/csrc/sparse/all/SpconvOps.h>
 #include <spconvlib/spconv/csrc/sparse/all/HashCoreHost.h>
+#include <numeric>
 namespace spconvlib {
 namespace spconv {
 namespace csrc {

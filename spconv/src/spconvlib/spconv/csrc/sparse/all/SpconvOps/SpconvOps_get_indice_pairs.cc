@@ -1,4 +1,5 @@
 #include <spconvlib/spconv/csrc/sparse/all/SpconvOps.h>
+#include <numeric>
 namespace spconvlib {
 namespace spconv {
 namespace csrc {

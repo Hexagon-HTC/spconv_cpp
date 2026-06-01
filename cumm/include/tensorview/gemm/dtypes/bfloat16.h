@@ -254,9 +254,9 @@ template <> struct numeric_limits<tv::bfloat16_t> {
   static bool const has_infinity = true;
   static bool const has_quiet_NaN = true;
   static bool const has_signaling_NaN = false;
-  static std::float_denorm_style const has_denorm = std::denorm_present;
+  static float_denorm_style const has_denorm = denorm_present;
   static bool const has_denorm_loss = true;
-  static std::float_round_style const round_style = std::round_to_nearest;
+  static float_round_style const round_style = round_to_nearest;
   static bool const is_iec559 = false;
   static bool const is_bounded = true;
   static bool const is_modulo = false;
