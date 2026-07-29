@@ -1775,7 +1775,15 @@ public:
               tensor =
                   Tensor(this->shape_, this->stride_, dtype, this->device(),
                          this->pinned(), this->storage_->managed());
-              std::copy(ptr, ptr + this->size(), tensor.data<Tdst>());
+              // Dispatching over every dtype pair instantiates all narrowing
+              // combinations, so the conversion is made explicit here. Letting
+              // std::copy convert implicitly makes MSVC report C4244/C4267 from
+              // inside <xutility> in every consumer that instantiates astype.
+              auto dst = tensor.data<Tdst>();
+              const size_t count = this->size();
+              for (size_t i = 0; i < count; ++i) {
+                dst[i] = static_cast<Tdst>(ptr[i]);
+              }
             },
             [&](auto _) {
               TV_THROW_INVALID_ARG("not convertable from",
